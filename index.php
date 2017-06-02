@@ -29,14 +29,7 @@
  </div>
  <div class="field">
    <label>Billing Address</label>
-   <div class="fields">
-     <div class="twelve wide field">
-       <input name="shipping[address]" placeholder="Street Address" type="text">
-     </div>
-     <div class="four wide field">
-       <input name="shipping[address-2]" placeholder="Apt #" type="text">
-     </div>
-   </div>
+   
  </div>
 
  <div class="ui button" tabindex="0">Submit Order</div>
