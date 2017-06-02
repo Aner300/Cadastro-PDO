@@ -17,6 +17,13 @@ class ComposerStaticInit0c4ab96bc6d820d81c2f783cf7673b74
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
         ),
+        'A' => 
+        array (
+            'Asw\\Database\\' => 13,
+            'Acme\\Models\\' => 12,
+            'Acme\\Interfaces\\' => 16,
+            'Acme\\Classes\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -27,6 +34,22 @@ class ComposerStaticInit0c4ab96bc6d820d81c2f783cf7673b74
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Asw\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Asw/Database',
+        ),
+        'Acme\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Acme/Models',
+        ),
+        'Acme\\Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Acme/Interfaces',
+        ),
+        'Acme\\Classes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Acme/Classes',
         ),
     );
 
