@@ -1,0 +1,30 @@
+.ui.form {
+    position: relative;
+    max-width: 100%;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #fff;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 1.4285em;
+    color: rgba(0,0,0,.87);
+    font-smoothing: antialiased;
+}
+.ui.form .fields {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    margin: 0 -.5em 1em;
+}
