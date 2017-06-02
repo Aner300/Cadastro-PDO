@@ -17,7 +17,7 @@
 <form class="ui form">
  <h4 class="ui dividing header">Informações Pessoais</h4>
  <div class="field">
-   <label>Name</label>
+   <label>Nome</label>
    <div class="two fields">
      <div class="field">
        <input name="shipping[first-name]" placeholder="First Name" type="text">
@@ -27,11 +27,6 @@
      </div>
    </div>
  </div>
- <div class="field">
-   <label>Billing Address</label>
-   
- </div>
-
  <div class="ui button" tabindex="0">Submit Order</div>
 </form>
     <script type="text/javascript" src="public/assets/js/semantic.min.js"></script>
