@@ -8,27 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css">
   </head>
   <body>
-    <div style="width: 800px;margin: 0 auto;">
-
-    </div>
-<?php
+    <?php
       $conn = new Asw\Database\Connection;
-?>
-<form class="ui form">
- <h4 class="ui dividing header">Informações Pessoais</h4>
- <div class="field">
-   <label>Nome</label>
-   <div class="two fields">
-     <div class="field">
-       <input name="shipping[first-name]" placeholder="First Name" type="text">
-     </div>
-     <div class="field">
-       <input name="shipping[last-name]" placeholder="Last Name" type="text">
-     </div>
-   </div>
- </div>
- <div class="ui button" tabindex="0">Submit Order</div>
-</form>
+      $conn->connection();
+    ?>
+  <div style="width:800px;margin: 0 auto;">
+    <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'php' : 'includes/home.php'; ?>
+  </div>
+
+
     <script type="text/javascript" src="public/assets/js/semantic.min.js"></script>
   </body>
 </html>
