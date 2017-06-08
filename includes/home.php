@@ -23,5 +23,31 @@
 </form>
 
 <div class="ui divider">
+<h2 style="color: green;"><i class="users icon"></i>Lista de Users Cadastrados</h2>
+
+  <table width="100%" class="ui table">
+    <thead>
+      <tr>
+        <th>Usuário</th>
+        <th>Email</th>
+        <th>Editar</th>
+        <th>Apagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $user = new Acme\Models\UserModel;
+      $users = $user->read();
+      foreach ($users as $user):
+      ?>
+      <tr>
+        <td><?php echo $user->nome;?></td>
+        <td><?php echo $user->email;?></td>
+        <td><button class="ui green button"><i class="edit icon"></i>Editar</button></td>
+        <td><button class="ui red button"><i class="remove icon"></i>Apagar</button></td>
+      </tr>
+    <?php endforeach;?>
+    </tbody>
+  </table>
 
 </div>

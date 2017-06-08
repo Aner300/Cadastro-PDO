@@ -8,15 +8,15 @@ use PDOException;
 /**
  *
  */
-class AsModel implements Imodel
+class AswModel implements Imodel
 {
   private $database;
   private $attributes;
-  private $table;
+
 
 public function __construct(){
   $database = new Connection;
-  $this->$database = $database->Connection();
+  $this->database = $database->Connection();
 }
 
   public function create($attributes){
