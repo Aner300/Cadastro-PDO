@@ -1,4 +1,16 @@
 <?php require 'config/config.php'; ?>
+<?php
+$user = new Acme\Models\UserModel;
+//$cadastrado=$user->create([
+  //'nome' => 'Haziel',
+  //'email' => 'haziel@gmail.com',
+  //'senha' => '12345678'
+  $deletado = $user->delete('idusers',1);
+
+  dump($deletado);
+
+//]);
+?>
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
