@@ -1,7 +1,7 @@
 <?php
 namespace Asw\Database;
 
-class Attributes {
+class AttributesCreate {
   public function createFields($attributes){
 
     return implode(',',array_keys($attributes));

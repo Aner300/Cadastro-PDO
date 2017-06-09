@@ -1,15 +1,13 @@
 <?php require 'config/config.php'; ?>
 <?php
 $user = new Acme\Models\UserModel;
-//$cadastrado=$user->create([
-  //'nome' => 'Haziel',
-  //'email' => 'haziel@gmail.com',
-  //'senha' => '12345678'
-  $deletado = $user->delete('idusers',1);
+$atualizado = [
+  'nome' => 'Haziel Richard Ribeiro',
+  'email' => 'haziel@gmail.com',
+  'senha' => '876543210'
 
-  dump($deletado);
-
-//]);
+];
+$user->update(2,$atualizado);
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">

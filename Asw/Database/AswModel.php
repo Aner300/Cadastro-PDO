@@ -2,7 +2,7 @@
 namespace Asw\Database;
 use Acme\Interfaces\Imodel;
 use Asw\Database\Connection;
-use Asw\Database\Attributes;
+use Asw\Database\AttributesCreate;
 use PDOException;
 
 
@@ -12,25 +12,25 @@ use PDOException;
 class AswModel implements Imodel
 {
   private $database;
-  private $attributes;
+
 
 
 public function __construct(){
   $database = new Connection;
   $this->database = $database->Connection();
-  $this->attributes = new Attributes;
+
 }
 
   public function create($attributes){
 
+    $attributes = new AttributesCreate;
 
-
-    $fields = $this->attributes->createFields($attributes);
-    $values = $this->attributes->createValues($attributes);
+    $fields = $attributes->createFields($attributes);
+    $values = $attributes->createValues($attributes);
 
     $query = "insert into $this->table($fields) values($values)";
     $pdo = $this->database->prepare($query);
-    $bindParameters = $this->attributes->bindCreateParameters($attributes);
+    $bindParameters = $attributes->bindCreateParameters($attributes);
 
     try {
       $pdo->execute($bindParameters);
@@ -51,8 +51,22 @@ public function __construct(){
 
   }
   public function update($id,$attributes){
+    $attributesUpdate = new AttributesUpdate;
 
+    $fields = $attributesUpdate->updateFields($attributes);
+
+    $query = "update $this->table set $fields where id = :id";
+    $pdo = $this->database->prepare($query);
+    $bindUpdateParameters = $attributes->bindUpdateParameters($attributes);
+    $bindUpdateParameters['id'] = $id;
+    try {
+      $pdo->execute($bindUpdateParameters);
+
+    } catch (PDOException $e) {
+      dump($e->getMessage());
+    }
   }
+
 
   public function delete($nome,$value){
     $query = "delete from $this->table where $nome = :$nome";
@@ -66,7 +80,16 @@ public function __construct(){
     }
 
   }
-  public function findBy($name,$value){
+  public function findBy($nome,$value){
+    $query = "select * from $this->table where $nome = $value";
+    $pdo = $this->database->prepare($query);
+    try {
+      $pdo->bindParam(":$nome",$value);
+      $pdo->execute();
+      return $pdo->rowCount();
+    } catch (PDOException $e) {
+      dump($e->getMessage());
+    }
 
   }
 }
