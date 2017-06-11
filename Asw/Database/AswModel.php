@@ -3,6 +3,7 @@ namespace Asw\Database;
 use Acme\Interfaces\Imodel;
 use Asw\Database\Connection;
 use Asw\Database\AttributesCreate;
+use Asw\Database\AttributesUpdate;
 use PDOException;
 
 
@@ -51,9 +52,8 @@ public function __construct(){
 
   }
   public function update($id,$attributes){
-    $attributesUpdate = new AttributesUpdate;
-
-    $fields = $attributesUpdate->updateFields($attributes);
+    $attributes = new AttributesUpdate;
+    $fields = $attributes->updateFields($attributes);
 
     $query = "update $this->table set $fields where id = :id";
     $pdo = $this->database->prepare($query);

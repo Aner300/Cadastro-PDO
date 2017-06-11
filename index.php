@@ -18,10 +18,7 @@ $user->update(2,$atualizado);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css">
   </head>
   <body>
-    <?php
-      $conn = new Asw\Database\Connection;
-      $conn->connection();
-    ?>
+
   <div style="width:800px;margin: 0 auto;">
     <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'php' : 'includes/home.php'; ?>
   </div>
