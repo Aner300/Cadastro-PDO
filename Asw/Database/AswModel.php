@@ -24,14 +24,14 @@ public function __construct(){
 
   public function create($attributes){
 
-    $attributes = new AttributesCreate;
+    $attributesCadastrar = new AttributesCreate;
 
-    $fields = $attributes->createFields($attributes);
-    $values = $attributes->createValues($attributes);
+    $fields = $attributesCadastrar->createFields($attributes);
+    $values = $attributesCadastrar->createValues($attributes);
 
     $query = "insert into $this->table($fields) values($values)";
     $pdo = $this->database->prepare($query);
-    $bindParameters = $attributes->bindCreateParameters($attributes);
+    $bindParameters = $attributesCadastrar->bindCreateParameters($attributes);
 
     try {
       $pdo->execute($bindParameters);
@@ -52,15 +52,16 @@ public function __construct(){
 
   }
   public function update($id,$attributes){
-    $attributes = new AttributesUpdate;
-    $fields = $attributes->updateFields($attributes);
+    $attributesUpdate = new AttributesUpdate;
+    $fields = $attributesUpdate->updateFields($attributes);
 
-    $query = "update $this->table set $fields where id = :id";
+    $query = "update $this->table set $fields where idusers = :id";
     $pdo = $this->database->prepare($query);
-    $bindUpdateParameters = $attributes->bindUpdateParameters($attributes);
+    $bindUpdateParameters = $attributesUpdate->bindUpdateParameters($attributes);
     $bindUpdateParameters['id'] = $id;
     try {
-      $pdo->execute($bindUpdateParameters);
+    $pdo->execute($bindUpdateParameters);
+    return $pdo->rowCount();
 
     } catch (PDOException $e) {
       dump($e->getMessage());
@@ -86,7 +87,7 @@ public function __construct(){
     try {
       $pdo->bindParam(":$nome",$value);
       $pdo->execute();
-      return $pdo->rowCount();
+      return $pdo->fetch();
     } catch (PDOException $e) {
       dump($e->getMessage());
     }

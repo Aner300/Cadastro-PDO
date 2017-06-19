@@ -1,5 +1,5 @@
 <?php
-
+namespace Asw\Database;
 class AttributesUpdate{
 
   private function combineUpdateFields($attributes){
@@ -27,12 +27,9 @@ class AttributesUpdate{
   public function bindUpdateParameters($attributes){
     $keys = array_keys($attributes);
     $separadoPorDoisPontos = ':'.implode(',:',$keys);
-dump(explode(',',$separadoPorDoisPontos));
-die();
-
     $combineUpdate = array_combine(explode(',',$separadoPorDoisPontos),
     array_values($attributes));
-    return combineUpdate;
+    return $combineUpdate;
   }
 }
 

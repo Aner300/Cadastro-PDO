@@ -1,14 +1,59 @@
 <?php require 'config/config.php'; ?>
-<?php
-$user = new Acme\Models\UserModel;
-$atualizado = [
-  'nome' => 'Haziel Richard Ribeiro',
-  'email' => 'haziel@gmail.com',
-  'senha' => '876543210'
 
-];
-$user->update(2,$atualizado);
+<?php
+
+if (isset($_POST['atualizar'])){
+  $user = new Acme\Models\UserModel;
+  $atualizado = $user->update($_POST['id'],[
+    'nome' => $_POST['nome'],
+    'email' => $_POST['email']
+  ]);
+
+if($atualizado==1){
+  $mnsagem = '<div class="ui success message">
+<i class="close icon"></i>
+<div class="header">
+  Utilizador Atualizado com successo.
+</div>
+<p>Utilizador: "'.$_POST['nome'].'"</p>
+</div>';
+}
+
+}
+
 ?>
+
+<?php
+if (isset($_POST['cadastrar']))
+{
+  $user = new Acme\Models\UserModel;
+  $cadastrado = $user->create(
+    [
+    'nome'=> $_POST['nome'],
+    'email'=> $_POST['email'],
+    'senha'=> $_POST['senha']
+  ]);
+
+  if ($cadastrado) {
+    $mensagem = '<div class="ui success message">
+  <i class="close icon"></i>
+  <div class="header">
+    Utilizador Registado com successo.
+  </div>
+  <p>Utilizador: "'.$_POST['nome'].'"</p>
+</div>';
+  }
+}
+
+if (isset($_GET['apagar']) && $_GET['apagar'] == true) {
+  $user = new Acme\Models\UserModel;
+  $user->delete('idusers',$_GET['id']);
+}
+
+
+  ?>
+  <?php echo(isset($mnsagem)) ? $mnsagem : ''; ?>
+
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
@@ -20,7 +65,7 @@ $user->update(2,$atualizado);
   <body>
 
   <div style="width:800px;margin: 0 auto;">
-    <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'php' : 'includes/home.php'; ?>
+    <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'.php' : 'includes/home.php'; ?>
   </div>
 
 

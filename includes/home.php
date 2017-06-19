@@ -1,20 +1,24 @@
-<h2 style="color: green;"><i class="user icon"></i>Cadastrar User</h2>
-<form class="ui form" action="index.html" method="post">
+<h2 style="color: green;"><span class="icon-user-plus"></span>Registar Utilizador</h2>
 
-<div class="filed">
-  <label>User</label>
-  <input type="text" name="nome" value="" placeholder="Digite o seu nome">
-  <input type="hidden" name="cadastrar" value="">
+<?php
+    echo (isset($mensagem)) ? $mensagem : '';
+ ?>
+
+<form class="ui form" action="" method="post">
+<div class="field">
+  <label>Nome</label>
+  <input type="text" name="nome" placeholder="Digite o seu nome">
+  <input type="hidden" name="cadastrar">
 </div>
 
-<div class="filed">
+<div class="field">
   <label>E-mail</label>
-  <input type="text" name="email" value="" placeholder="Digite o seu email">
+  <input type="text" name="email" placeholder="Digite o seu email">
 </div>
 
-<div class="filed">
+<div class="field">
   <label>Senha</label>
-  <input type="password" name="senha" value="">
+  <input type="password" name="senha">
 </div>
 
 <div style="margin-top: 10px;">
@@ -22,8 +26,8 @@
 </div>
 </form>
 
-<div class="ui divider">
-<h2 style="color: green;"><i class="users icon"></i>Lista de Users Cadastrados</h2>
+<div class="ui divider"></div>
+<h2 style="color: green;"><i class="users icon"></i>Utilizadores Registados</h2>
 
   <table width="100%" class="ui table">
     <thead>
@@ -43,11 +47,9 @@
       <tr>
         <td><?php echo $user->nome;?></td>
         <td><?php echo $user->email;?></td>
-        <td><button class="ui green button"><i class="edit icon"></i>Editar</button></td>
-        <td><button class="ui red button"><i class="remove icon"></i>Apagar</button></td>
+        <td><a href="?p=editar&edit=true&id=<?php echo $user->idusers;?>" class="ui green button"><i class="edit icon"></i>Editar</a></td>
+        <td><a href="?apagar=true&id=<?php echo $user->idusers;?>" class="ui red button"><i class="remove icon"></i>Apagar</a></td>
       </tr>
     <?php endforeach;?>
     </tbody>
   </table>
-
-</div>
